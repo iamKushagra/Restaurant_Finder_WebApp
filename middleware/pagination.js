@@ -43,6 +43,9 @@ const pagination = (model) => async(req, res, next) => {
     results.regex = regex;
 
     match.Name = new RegExp(regex,"i");
+    match.Area = new RegExp(regex,"i");
+    match.Tags = new RegExp(regex,"i");
+    match.Category = new RegExp(regex,"i");
 
 
 
