@@ -7,8 +7,6 @@ Clone this repo to your computer
 
 "npm install" to install necessary modules
 
-#Peace
-
 
 
 
