@@ -7,10 +7,11 @@ import Items from './components/items'
 
 import store from './store';
 import {Provider} from 'react-redux';
+import { getItems } from './actions/itemActions'
 
 class App extends React.Component {
     componentDidMount() {
-        store.dispatch()
+        store.dispatch(getItems)
     }
 
     render() {
