@@ -21,8 +21,8 @@ const pagination = (model) => async(req, res, next) => {
     const match = {}
 
 
-        match.category = category;
-    match.price = {$gt:from,$lt:to}
+        match.Category = category;
+    match.Price = {$gt:from,$lt:to}
 
 
 
