@@ -36,4 +36,35 @@ const ItemSchema = new Schema({
     }
 },{timestamps:true});
 
-module.exports = mongoose.model("Item",ItemSchema, "restaurantdetails");
+class Restaurant {
+    static async getRestaurant() {
+      const data = await this.find().limit(8);
+      return data;
+    }
+  
+    static async search(options = {}) {
+      try {
+        const userQuery = await this.aggregate([
+            {
+              $match: {
+                Name: {
+                  $regex: options.q,
+                  $options: 'i',
+                },
+              },
+            },
+            { $skip: options.page > 0 ? ((options.page - 1) * options.limit ) : 0},
+            { $limit: options.limit },
+            { $sort: { Name : 1 } },
+          ]);
+          console.log(userQuery);
+          return userQuery;
+      } catch (err) {
+        throw err;
+      }
+    }
+}
+
+ItemSchema.loadClass(Restaurant);
+
+module.exports = mongoose.model("Item", ItemSchema, "restaurantdetails");

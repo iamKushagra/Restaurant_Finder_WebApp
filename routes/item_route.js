@@ -1,18 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Item = require('../models/item_model');
-const pagination = require('../middleware/pagination');
+const { searchByFood,  getRestaurant} = require('../middleware/pagination');
 
 
-router.get("/",pagination(Item), (req, res) => {
-    res.json(req.results);
-})
+router.get("/",searchByFood);
 
-router.get("/:id", (req, res) => {
-    Item
-        .findById(req.params.id)
-        .then(item => res.json(item))
-})
-
+router.get("/get", getRestaurant)
 
 module.exports = router;

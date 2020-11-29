@@ -20,12 +20,9 @@ class App extends React.Component {
                 <Router>
                     <div className="wrapper">
                         <Header/>
-
                         <div className="content-section">
-
                             <div className="container">
                                 <Route path='/' exact strict component={Items}/>
-
                             </div>
                         </div>
                     </div>
